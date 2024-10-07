@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Calendar } from '@/components/ui/calendar';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Calendar } from "@/components/ui/calendar";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { toast } from '@/components/ui/use-toast';
+} from "@/components/ui/select";
+import { toast } from "@/hooks/use-toast";
 
 const BookingSystem = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -20,17 +20,17 @@ const BookingSystem = () => {
   const handleBooking = () => {
     if (!date || !time || !court) {
       toast({
-        title: 'Booking Error',
-        description: 'Please select a date, time, and court.',
-        variant: 'destructive',
+        title: "Booking Error",
+        description: "Please select a date, time, and court.",
+        variant: "destructive",
       });
       return;
     }
 
     // Here you would typically send this data to your backend API
-    console.log('Booking:', { date, time, court });
+    console.log("Booking:", { date, time, court });
     toast({
-      title: 'Booking Confirmed',
+      title: "Booking Confirmed",
       description: `Your booking for ${court} on ${date.toDateString()} at ${time} has been confirmed.`,
     });
   };
