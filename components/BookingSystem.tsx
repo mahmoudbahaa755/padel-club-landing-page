@@ -16,22 +16,26 @@ const BookingSystem = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [time, setTime] = useState<string | undefined>();
   const [court, setCourt] = useState<string | undefined>();
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [hours, setHours] = useState<number | undefined>();
 
   const handleBooking = () => {
-    if (!date || !time || !court) {
+    if (!date || !time || !court || !name || !email || !phone || !hours) {
       toast({
         title: "Booking Error",
-        description: "Please select a date, time, and court.",
+        description: "Please fill in all fields.",
         variant: "destructive",
       });
       return;
     }
 
     // Here you would typically send this data to your backend API
-    console.log("Booking:", { date, time, court });
+    console.log("Booking:", { date, time, court, name, email, phone, hours });
     toast({
       title: "Booking Confirmed",
-      description: `Your booking for ${court} on ${date.toDateString()} at ${time} has been confirmed.`,
+      description: `Your booking for ${court} on ${date.toDateString()} at ${time} for ${hours} hour(s) has been confirmed.`,
     });
   };
 
@@ -50,6 +54,39 @@ const BookingSystem = () => {
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Select Date
@@ -93,6 +130,18 @@ const BookingSystem = () => {
                 <SelectItem value="Court 4">Court 4</SelectItem>
               </SelectContent>
             </Select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Booking Hours
+            </label>
+            <input
+              type="number"
+              value={hours}
+              onChange={(e) => setHours(Number(e.target.value))}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              min="1"
+            />
           </div>
         </div>
         <div className="mt-8">
