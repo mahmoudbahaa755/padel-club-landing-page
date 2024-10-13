@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import Link from "next/link";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -33,45 +33,70 @@ const Footer = () => {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Club</h3>
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                  Club
+                </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <Link href="#overview" className="text-base text-gray-300 hover:text-white">
+                    <Link
+                      href="#overview"
+                      className="text-base text-gray-300 hover:text-white"
+                    >
                       Overview
                     </Link>
                   </li>
                   <li>
-                    <Link href="#location" className="text-base text-gray-300 hover:text-white">
+                    <Link
+                      href="#location"
+                      className="text-base text-gray-300 hover:text-white"
+                    >
                       Location
                     </Link>
                   </li>
                   <li>
-                    <Link href="#pricing" className="text-base text-gray-300 hover:text-white">
+                    <Link
+                      href="#pricing"
+                      className="text-base text-gray-300 hover:text-white"
+                    >
                       Pricing
                     </Link>
                   </li>
                   <li>
-                    <Link href="#gallery" className="text-base text-gray-300 hover:text-white">
+                    <Link
+                      href="#gallery"
+                      className="text-base text-gray-300 hover:text-white"
+                    >
                       Gallery
                     </Link>
                   </li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Services</h3>
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                  Services
+                </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <Link href="#booking" className="text-base text-gray-300 hover:text-white">
+                    <Link
+                      href="#booking"
+                      className="text-base text-gray-300 hover:text-white"
+                    >
                       Court Booking
                     </Link>
                   </li>
                   <li>
-                    <Link href="#team-finder" className="text-base text-gray-300 hover:text-white">
+                    <Link
+                      href="#team-finder"
+                      className="text-base text-gray-300 hover:text-white"
+                    >
                       Team Finder
                     </Link>
                   </li>
                   <li>
-                    <Link href="#cafe" className="text-base text-gray-300 hover:text-white">
+                    <Link
+                      href="#cafe"
+                      className="text-base text-gray-300 hover:text-white"
+                    >
                       Café
                     </Link>
                   </li>
@@ -82,7 +107,7 @@ const Footer = () => {
         </div>
         <div className="mt-12 border-t border-gray-700 pt-8">
           <p className="text-base text-gray-400 xl:text-center">
-            &copy; 2023 Padel Stadium Club. All rights reserved.
+            &copy; 2024 Padel Stadium Club. All rights reserved.
           </p>
         </div>
       </div>

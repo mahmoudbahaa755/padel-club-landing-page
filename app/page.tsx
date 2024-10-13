@@ -5,8 +5,7 @@ import Pricing from "@/components/Pricing";
 import Gallery from "@/components/Gallery";
 import CafeMenu from "@/components/CafeMenu";
 import BookingSystem from "@/components/BookingSystem";
-// import BookingSystem from '@/components/BookingSystem';
-// import TeamFinder from '@/components/TeamFinder';
+import TeamFinder from "@/components/TeamFinder";
 
 export default function Home() {
   return (
@@ -18,7 +17,7 @@ export default function Home() {
       <Gallery />
       <CafeMenu />
       <BookingSystem />
-      {/* <TeamFinder /> */}
+      <TeamFinder />
     </div>
   );
 }

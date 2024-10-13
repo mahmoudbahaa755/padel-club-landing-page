@@ -1,16 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Calendar } from "@/components/ui/calendar";
 import { toast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const BookingSystem = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -38,6 +31,7 @@ const BookingSystem = () => {
       description: `Your booking for ${court} on ${date.toDateString()} at ${time} for ${hours} hour(s) has been confirmed.`,
     });
   };
+  const unavailableHours = ["10:00", "14:00"]; // Example of unavailable hours
 
   return (
     <section id="booking" className="py-12 bg-gray-50">
@@ -50,7 +44,7 @@ const BookingSystem = () => {
             Reserve Your Court
           </p>
           <p className="mt-4 text-xl text-gray-500">
-            Choose your preferred date, time, and court to make a reservation.
+            Choose your preferred date to make a reservation.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -102,36 +96,28 @@ const BookingSystem = () => {
             <label className="block text-sm font-medium text-gray-700">
               Select Time
             </label>
-            <Select onValueChange={setTime}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select time" />
-              </SelectTrigger>
-              <SelectContent>
-                {Array.from({ length: 14 }, (_, i) => i + 8).map((hour) => (
-                  <SelectItem key={hour} value={`${hour}:00`}>
-                    {hour}:00
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="grid grid-cols-4 gap-2">
+              {Array.from({ length: 14 }, (_, i) => i + 8).map((hour) => {
+                const hourString = `${hour}:00`;
+                const isDisabled = unavailableHours.includes(hourString);
+                return (
+                  <button
+                    key={hour}
+                    onClick={() => !isDisabled && setTime(hourString)}
+                    className={`p-2 rounded-md border ${
+                      isDisabled
+                        ? "bg-gray-300 cursor-not-allowed"
+                        : "bg-white hover:bg-gray-100"
+                    }`}
+                    disabled={isDisabled}
+                  >
+                    {hourString}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Select Court
-            </label>
-            <Select onValueChange={setCourt}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select court" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Court 1">Court 1</SelectItem>
-                <SelectItem value="Court 2">Court 2</SelectItem>
-                <SelectItem value="Court 3">Court 3</SelectItem>
-                <SelectItem value="Court 4">Court 4</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-700">
               Booking Hours
             </label>
@@ -142,7 +128,7 @@ const BookingSystem = () => {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
               min="1"
             />
-          </div>
+          </div> */}
         </div>
         <div className="mt-8">
           <Button onClick={handleBooking} className="w-full">
